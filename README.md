@@ -43,8 +43,9 @@ The source is on GitHub:
 
 The [latest release](https://github.com/simondewaal1980/rollerball-3d/releases/latest)
 has a ready-to-run Linux x86_64 build. Unpack the folder, keep `assets` next to
-the program, and start `./rollerball`. `docs/RUN-LINUX.txt` has the same steps in
-Dutch, with the full key list.
+the program, and start `./rollerball`. `LEESMIJ.txt` in the download (and
+`docs/RUN-LINUX.txt` in the source) has the same steps in Dutch, with the full
+key list.
 
 ### Build from source
 
