@@ -1,0 +1,37 @@
+ROLLERBALL 3D - Linux x86_64
+============================
+
+Dit is een kant-en-klare versie; je hoeft niets te compileren.
+
+1. Pak deze map ergens uit (bijvoorbeeld in je Persoonlijke map).
+2. Start het spel:
+   - dubbelklik op "rollerball", of
+   - open een terminal in deze map en typ:  ./rollerball
+   De map "assets" moet naast het programma blijven staan; daar zitten de
+   muziek, geluiden en de achtergrondafbeelding in.
+3. Werkt dubbelklikken niet? Maak het bestand eerst uitvoerbaar:
+      chmod +x rollerball
+
+Toetsen
+-------
+Linkerflipper     Linker Shift, Z of pijltje links
+Rechterflipper    Rechter Shift, M of pijltje rechts
+Plunger           Spatie ingedrukt houden, loslaten om te schieten
+Nudge / tilt      W of pijltje omhoog
+Starten           Enter, Spatie of een flipperknop
+1 / 2 / 3         1 speler, 2 spelers of Match Play
+Pauze             P
+Volledig scherm   F11 of Alt+Enter
+Muziek aan/uit    N
+Terug naar menu   Escape
+Stoppen           kies EXIT GAME in het menu en druk op Enter
+
+Systeemeisen
+------------
+Linux op een 64-bits Intel/AMD-processor met een werkende grafische kaart en
+ALSA-geluid. Getest op Ubuntu 26.04. Vulkan- of OpenGL-stuurprogramma's zijn
+voldoende; het spel gebruikt de standaard stuurprogramma's van je systeem.
+
+Onbekende klank of ontbrekend geluid? Controleer of de map "assets" naast het
+programma staat. Zonder die map start het spel nog steeds, maar dan zijn er
+geen uiterlijke achtergrond en geen eigen geluidsbestanden.

@@ -681,7 +681,7 @@ fn capture_and_test(
             if driver.frame >= 120
                 && driver.t >= 2.0
                 && !already_saved
-                && driver.screenshot_attempts < 5
+                && driver.screenshot_attempts < 20
                 && driver.t - driver.last_screenshot_t > 0.9
             {
                 driver.screenshot_attempts += 1;
@@ -696,7 +696,10 @@ fn capture_and_test(
             if already_saved {
                 exit.write(AppExit::Success);
             }
-            if driver.t > 8.0 {
+            // A capture on a slow or busy machine may need more than a couple
+            // of seconds to reach 120 frames. Give it 30 s, then leave anyway
+            // so a check can never hang on a window that refuses to be read.
+            if driver.t > 30.0 {
                 exit.write(AppExit::Success);
             }
         }

@@ -39,6 +39,15 @@ inserts and score panels readable.
 The source is on GitHub:
 <https://github.com/simondewaal1980/rollerball-3d>
 
+### Ready to play (Linux, no Rust needed)
+
+The [latest release](https://github.com/simondewaal1980/rollerball-3d/releases/latest)
+has a ready-to-run Linux x86_64 build. Unpack the folder, keep `assets` next to
+the program, and start `./rollerball`. `docs/RUN-LINUX.txt` has the same steps in
+Dutch, with the full key list.
+
+### Build from source
+
 ```sh
 git clone https://github.com/simondewaal1980/rollerball-3d
 cd rollerball-3d
