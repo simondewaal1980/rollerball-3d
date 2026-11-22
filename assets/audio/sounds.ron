@@ -1,0 +1,41 @@
+// ROLLERBALL sound map.
+//
+// Drop your own .wav or .ogg files into this folder and point at them here.
+// Missing files are replaced automatically by the built-in PSG-style synth.
+// volume_db is in decibels; -12 is quiet, -6 is loud.
+//
+// The shipped clips are original MSX-PSG-style recreations, not samples from
+// the 1984 game. If you own an original recording, drop the files in this
+// folder under these names (or edit the file names below) and the game uses
+// them on the next start, without a rebuild.
+//
+// An event may appear more than once. The game then picks one of its files at
+// random for every hit, so repeated bumpers do not sound mechanically alike.
+//
+// The looping background tune lives on its own channel (N mutes it). Replace
+// music_theme.wav with an .ogg or .wav of your own; missing files fall back to
+// the procedural 8-bit loop in code.
+(
+    music: (file: "music_theme.wav", volume_db: -16.0),
+    sounds: [
+        (event: "start",               file: "start.wav",               volume_db: -11.0),
+        (event: "plunger_charge",      file: "plunger_charge.wav",      volume_db: -13.0),
+        (event: "plunger_release",     file: "plunger_release.wav",     volume_db: -9.0),
+        (event: "flipper_hit",         file: "flipper_hit.wav",         volume_db: -14.0),
+        (event: "flipper_hit",         file: "flipper_hit_2.wav",       volume_db: -14.0),
+        (event: "bumper_hit",          file: "bumper_hit.wav",          volume_db: -11.0),
+        (event: "bumper_hit",          file: "bumper_hit_2.wav",        volume_db: -11.0),
+        (event: "bumper_hit",          file: "bumper_hit_3.wav",        volume_db: -11.0),
+        (event: "rollover_lane",       file: "rollover_lane.wav",       volume_db: -13.0),
+        (event: "rollover_lane",       file: "rollover_lane_2.wav",     volume_db: -13.0),
+        (event: "slot_spin",           file: "slot_spin.wav",           volume_db: -13.0),
+        (event: "slot_win",            file: "slot_win.ogg",            volume_db: -7.0),
+        (event: "chute_drop",          file: "chute_drop.wav",          volume_db: -11.0),
+        (event: "bonus_countdown_tick", file: "bonus_countdown_tick.wav", volume_db: -14.0),
+        (event: "ball_drain",          file: "ball_drain.wav",          volume_db: -9.0),
+        (event: "game_over",           file: "game_over.wav",           volume_db: -7.0),
+        (event: "kickback",            file: "kickback.wav",            volume_db: -10.0),
+        (event: "extra_ball",          file: "extra_ball.wav",          volume_db: -9.0),
+        (event: "tilt",                file: "tilt.wav",                volume_db: -9.0),
+    ],
+)

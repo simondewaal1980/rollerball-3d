@@ -1,0 +1,1029 @@
+{
+  "version": 1,
+  "values": [
+    {
+      "name": "virtual canvas",
+      "group": "display",
+      "value": "320x240",
+      "source": "estimated: MSX-inspired 4:3 canvas; original 256x192 named in the brief"
+    },
+    {
+      "name": "window",
+      "group": "display",
+      "value": "960x720",
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "playfield share",
+      "group": "display",
+      "value": 70,
+      "unit": "%",
+      "source": "brief"
+    },
+    {
+      "name": "hud share",
+      "group": "display",
+      "value": 30,
+      "unit": "%",
+      "source": "brief"
+    },
+    {
+      "name": "screens",
+      "group": "display",
+      "value": 4,
+      "source": "brief"
+    },
+    {
+      "name": "screen height",
+      "group": "display",
+      "value": 240,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "table height",
+      "group": "display",
+      "value": 960,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "pixel filtering",
+      "group": "display",
+      "value": "nearest",
+      "source": "brief"
+    },
+    {
+      "name": "fixed physics rate",
+      "group": "physics",
+      "value": 120,
+      "unit": "Hz",
+      "source": "brief"
+    },
+    {
+      "name": "continuous collision detection",
+      "group": "physics",
+      "value": "swept + speculative",
+      "source": "brief"
+    },
+    {
+      "name": "gravity",
+      "group": "physics",
+      "value": 1500,
+      "unit": "px/s2",
+      "estimated": true
+    },
+    {
+      "name": "ball radius",
+      "group": "physics",
+      "value": 5,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "ball restitution",
+      "group": "physics",
+      "value": 0.3,
+      "estimated": true
+    },
+    {
+      "name": "ball friction",
+      "group": "physics",
+      "value": 0.06,
+      "estimated": true
+    },
+    {
+      "name": "wall restitution",
+      "group": "physics",
+      "value": 0.45,
+      "estimated": true
+    },
+    {
+      "name": "wall friction",
+      "group": "physics",
+      "value": 0.08,
+      "estimated": true
+    },
+    {
+      "name": "bumper radius",
+      "group": "physics",
+      "value": 11,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "bumper restitution",
+      "group": "physics",
+      "value": 0.8,
+      "estimated": true
+    },
+    {
+      "name": "bumper kick",
+      "group": "physics",
+      "value": 360,
+      "unit": "px/s",
+      "estimated": true
+    },
+    {
+      "name": "bumper kick upward",
+      "group": "physics",
+      "value": 120,
+      "unit": "px/s",
+      "estimated": true
+    },
+    {
+      "name": "bumper score cooldown",
+      "group": "physics",
+      "value": 0.1,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "slingshot restitution",
+      "group": "physics",
+      "value": 1.05,
+      "estimated": true
+    },
+    {
+      "name": "slingshot kick",
+      "group": "physics",
+      "value": "280 outward + 380 up",
+      "unit": "px/s",
+      "estimated": true
+    },
+    {
+      "name": "stuck ball watchdog",
+      "group": "physics",
+      "value": 6,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "slot stuck recovery delay",
+      "group": "physics",
+      "value": 1.1,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "slot stuck recovery impulse",
+      "group": "physics",
+      "value": "300 sideways + 260 up",
+      "unit": "px/s",
+      "estimated": true
+    },
+    {
+      "name": "flipper length",
+      "group": "flippers",
+      "value": 42,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "flipper art length",
+      "group": "flippers",
+      "value": 48,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "flipper width",
+      "group": "flippers",
+      "value": 7,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "flipper rest angle",
+      "group": "flippers",
+      "value": 24,
+      "unit": "degrees",
+      "estimated": true
+    },
+    {
+      "name": "flipper sweep",
+      "group": "flippers",
+      "value": 48,
+      "unit": "degrees",
+      "source": "brief: limited rotation"
+    },
+    {
+      "name": "flipper raise top speed",
+      "group": "flippers",
+      "value": 30,
+      "unit": "rad/s",
+      "estimated": true
+    },
+    {
+      "name": "flipper raise acceleration",
+      "group": "flippers",
+      "value": 1500,
+      "unit": "rad/s2",
+      "estimated": true
+    },
+    {
+      "name": "flipper return top speed",
+      "group": "flippers",
+      "value": 13,
+      "unit": "rad/s",
+      "estimated": true
+    },
+    {
+      "name": "flipper return acceleration",
+      "group": "flippers",
+      "value": 320,
+      "unit": "rad/s2",
+      "estimated": true
+    },
+    {
+      "name": "flipper end-stop braking",
+      "group": "flippers",
+      "value": 2400,
+      "unit": "rad/s2",
+      "estimated": true
+    },
+    {
+      "name": "flipper full stroke",
+      "group": "flippers",
+      "value": 0.033,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "flipper full return",
+      "group": "flippers",
+      "value": 0.075,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "flipper tip kick",
+      "group": "flippers",
+      "value": 1500,
+      "unit": "px/s",
+      "estimated": true
+    },
+    {
+      "name": "flipper hinge kick",
+      "group": "flippers",
+      "value": 300,
+      "unit": "px/s",
+      "estimated": true
+    },
+    {
+      "name": "flipper held position",
+      "group": "flippers",
+      "value": "passive, no launch; no rescue while held",
+      "estimated": true
+    },
+    {
+      "name": "flipper kick cooldown",
+      "group": "flippers",
+      "value": 0.06,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "flipper rubber friction",
+      "group": "flippers",
+      "value": 0.35,
+      "estimated": true
+    },
+    {
+      "name": "flipper rubber restitution",
+      "group": "flippers",
+      "value": 0.25,
+      "estimated": true
+    },
+    {
+      "name": "flipper outlane gap",
+      "group": "flippers",
+      "value": 14,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "active flippers",
+      "group": "flippers",
+      "value": "current screen only",
+      "source": "brief"
+    },
+    {
+      "name": "plunger full charge",
+      "group": "plunger",
+      "value": 0.95,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "plunger minimum launch speed",
+      "group": "plunger",
+      "value": 1760,
+      "unit": "px/s",
+      "estimated": true
+    },
+    {
+      "name": "plunger maximum launch speed",
+      "group": "plunger",
+      "value": 2380,
+      "unit": "px/s",
+      "estimated": true
+    },
+    {
+      "name": "plunger lane exit",
+      "group": "plunger",
+      "value": 880,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "camera follow smoothing",
+      "group": "camera",
+      "value": 11,
+      "unit": "1/s",
+      "estimated": true
+    },
+    {
+      "name": "camera view height",
+      "group": "camera",
+      "value": 240,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "camera vertical clamp",
+      "group": "camera",
+      "value": "120..840",
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "bumper score",
+      "group": "scoring",
+      "value": 100,
+      "estimated": true
+    },
+    {
+      "name": "slingshot score",
+      "group": "scoring",
+      "value": 50,
+      "estimated": true
+    },
+    {
+      "name": "abc lane score",
+      "group": "scoring",
+      "value": 250,
+      "estimated": true
+    },
+    {
+      "name": "abc lane bonus",
+      "group": "scoring",
+      "value": 100,
+      "estimated": true
+    },
+    {
+      "name": "abc complete score",
+      "group": "scoring",
+      "value": 2500,
+      "estimated": true
+    },
+    {
+      "name": "abc complete bonus",
+      "group": "scoring",
+      "value": 1000,
+      "estimated": true
+    },
+    {
+      "name": "drop target score",
+      "group": "scoring",
+      "value": 500,
+      "estimated": true
+    },
+    {
+      "name": "drop target bank score",
+      "group": "scoring",
+      "value": 5000,
+      "estimated": true
+    },
+    {
+      "name": "drop target reset delay",
+      "group": "scoring",
+      "value": 1.6,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "spinner score",
+      "group": "scoring",
+      "value": 100,
+      "estimated": true
+    },
+    {
+      "name": "kickback score",
+      "group": "scoring",
+      "value": 1000,
+      "estimated": true
+    },
+    {
+      "name": "chute score",
+      "group": "scoring",
+      "value": 100,
+      "estimated": true
+    },
+    {
+      "name": "slot trigger score",
+      "group": "scoring",
+      "value": 200,
+      "estimated": true
+    },
+    {
+      "name": "bonus start",
+      "group": "scoring",
+      "value": 1000,
+      "source": "brief"
+    },
+    {
+      "name": "bonus multiplier start",
+      "group": "scoring",
+      "value": 1,
+      "source": "brief"
+    },
+    {
+      "name": "bonus countdown ticks",
+      "group": "scoring",
+      "value": 20,
+      "estimated": true
+    },
+    {
+      "name": "bonus tick interval",
+      "group": "scoring",
+      "value": 0.075,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "bonus countdown delay",
+      "group": "scoring",
+      "value": 0.35,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "balls per player",
+      "group": "scoring",
+      "value": 3,
+      "source": "brief"
+    },
+    {
+      "name": "match play start score",
+      "group": "scoring",
+      "value": 5000,
+      "estimated": true
+    },
+    {
+      "name": "high score default",
+      "group": "scoring",
+      "value": 12000,
+      "estimated": true
+    },
+    {
+      "name": "slot triple bells",
+      "group": "slots",
+      "value": 3000,
+      "estimated": true
+    },
+    {
+      "name": "slot triple cherries",
+      "group": "slots",
+      "value": 2000,
+      "estimated": true
+    },
+    {
+      "name": "slot triple aubergines",
+      "group": "slots",
+      "value": 5000,
+      "estimated": true
+    },
+    {
+      "name": "slot pair",
+      "group": "slots",
+      "value": 500,
+      "estimated": true
+    },
+    {
+      "name": "slot no match",
+      "group": "slots",
+      "value": 100,
+      "estimated": true
+    },
+    {
+      "name": "slot reel stop times",
+      "group": "slots",
+      "value": "0.85, 1.20, 1.55",
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "slot cooldown",
+      "group": "slots",
+      "value": 2.5,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "slot cabinet footprint",
+      "group": "slots",
+      "value": "88 x 38",
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "slot cabinet cap",
+      "group": "slots",
+      "value": "12 px peaked roof, 44 px slopes, 3 px thick",
+      "estimated": true
+    },
+    {
+      "name": "slot roof slope",
+      "group": "slots",
+      "value": 15.3,
+      "unit": "degrees",
+      "estimated": true
+    },
+    {
+      "name": "nudge limit",
+      "group": "nudge",
+      "value": 3,
+      "source": "brief"
+    },
+    {
+      "name": "nudge window",
+      "group": "nudge",
+      "value": 3,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "nudge impulse",
+      "group": "nudge",
+      "value": "210 horizontal + 330 up",
+      "unit": "px/s",
+      "estimated": true
+    },
+    {
+      "name": "tilt duration",
+      "group": "nudge",
+      "value": 3,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "left flipper",
+      "group": "controls",
+      "value": "Left Shift / Z / Left Arrow",
+      "source": "brief"
+    },
+    {
+      "name": "right flipper",
+      "group": "controls",
+      "value": "Right Shift / M / Right Arrow",
+      "source": "brief"
+    },
+    {
+      "name": "plunger",
+      "group": "controls",
+      "value": "hold/release Space",
+      "source": "brief"
+    },
+    {
+      "name": "nudge",
+      "group": "controls",
+      "value": "W / Up Arrow",
+      "source": "brief"
+    },
+    {
+      "name": "pause",
+      "group": "controls",
+      "value": "P",
+      "estimated": true
+    },
+    {
+      "name": "audio backend",
+      "group": "audio",
+      "value": "bevy_kira_audio / Kira",
+      "source": "brief"
+    },
+    {
+      "name": "audio formats",
+      "group": "audio",
+      "value": "wav, ogg",
+      "source": "brief"
+    },
+    {
+      "name": "audio fallback",
+      "group": "audio",
+      "value": "procedural PSG synth",
+      "source": "brief"
+    },
+    {
+      "name": "audio files shipped",
+      "group": "audio",
+      "value": 19,
+      "source": "app/assets/audio/sounds.ron"
+    },
+    {
+      "name": "audio formats shipped",
+      "group": "audio",
+      "value": "18 wav + 1 ogg",
+      "source": "app/assets/audio/sounds.ron"
+    },
+    {
+      "name": "audio startup decoding",
+      "group": "audio",
+      "value": "decode first; missing or corrupt file uses synth",
+      "source": "app/src/audio.rs"
+    },
+    {
+      "name": "audio master volume",
+      "group": "audio",
+      "value": -6,
+      "unit": "dB",
+      "estimated": true
+    },
+    {
+      "name": "audio polyphony guard",
+      "group": "audio",
+      "value": "3:1 compressor at -14 dB, 4 ms attack, 140 ms release",
+      "estimated": true
+    },
+    {
+      "name": "audio event cap per frame",
+      "group": "audio",
+      "value": 16,
+      "estimated": true
+    },
+    {
+      "name": "sound events",
+      "group": "audio",
+      "value": 15,
+      "source": "brief: 11 required; 4 extras estimated"
+    },
+    {
+      "name": "audio shipped style",
+      "group": "audio",
+      "value": "original MSX AY-3-8910-style recreations, not original recordings",
+      "estimated": true
+    },
+    {
+      "name": "audio takes per hit",
+      "group": "audio",
+      "value": "bumper 3, flipper 2, rollover lane 2; random take per hit",
+      "estimated": true
+    },
+    {
+      "name": "start jingle length",
+      "group": "audio",
+      "value": 1.25,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "tilt sound length",
+      "group": "audio",
+      "value": 0.75,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "kickback sound length",
+      "group": "audio",
+      "value": 0.4,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "extra ball sound length",
+      "group": "audio",
+      "value": 0.95,
+      "unit": "s",
+      "estimated": true
+    },
+    {
+      "name": "presentation",
+      "group": "display",
+      "value": "perspective 3D",
+      "source": "request: modern 3D remake"
+    },
+    {
+      "name": "playfield art texture",
+      "group": "display",
+      "value": "448x1920",
+      "source": "estimated: nearest-neighbour render-to-texture"
+    },
+    {
+      "name": "3D camera field of view",
+      "group": "camera",
+      "value": 42,
+      "unit": "deg",
+      "estimated": true
+    },
+    {
+      "name": "3D camera height",
+      "group": "camera",
+      "value": 315,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "3D camera back offset",
+      "group": "camera",
+      "value": 250,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "3D camera look ahead",
+      "group": "camera",
+      "value": 0,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "3D follow smoothing",
+      "group": "camera",
+      "value": 11,
+      "unit": "1/s",
+      "source": "estimated: inherited 2D follow"
+    },
+    {
+      "name": "table slab depth",
+      "group": "display",
+      "value": 12,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "cabinet rail height",
+      "group": "display",
+      "value": 17,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "3D ball height",
+      "group": "physics",
+      "value": 5,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "3D bumper barrel radius",
+      "group": "display",
+      "value": 12.2,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "3D flipper capsule radius",
+      "group": "display",
+      "value": 4.4,
+      "unit": "px",
+      "estimated": true
+    },
+    {
+      "name": "starfield backdrop",
+      "group": "display",
+      "value": "920x1500 at z=-150",
+      "estimated": true
+    },
+    {
+      "name": "bloom intensity",
+      "group": "display",
+      "value": 0.12,
+      "estimated": true
+    },
+    {
+      "name": "ambient light",
+      "group": "display",
+      "value": 320,
+      "unit": "cd/m2",
+      "estimated": true
+    },
+    {
+      "name": "directional light",
+      "group": "display",
+      "value": 9000,
+      "unit": "lux",
+      "estimated": true
+    },
+    {
+      "name": "coloured point lights",
+      "group": "display",
+      "value": 4,
+      "estimated": true
+    },
+    {
+      "name": "UI render target",
+      "group": "display",
+      "value": "960x720",
+      "estimated": true
+    },
+    {
+      "name": "HUD slice of UI texture",
+      "group": "display",
+      "value": "x=672..960",
+      "estimated": true
+    },
+    {
+      "name": "background music",
+      "group": "audio",
+      "value": "looping original 8-bit chiptune",
+      "source": "request"
+    },
+    {
+      "name": "music file",
+      "group": "audio",
+      "value": "assets/audio/music_theme.wav",
+      "source": "assets/audio/sounds.ron"
+    },
+    {
+      "name": "music tempo",
+      "group": "audio",
+      "value": 126,
+      "unit": "BPM",
+      "estimated": true
+    },
+    {
+      "name": "music loop length",
+      "group": "audio",
+      "value": 15.24,
+      "unit": "s",
+      "source": "assets/audio/music_theme.wav"
+    },
+    {
+      "name": "music bars",
+      "group": "audio",
+      "value": 8,
+      "estimated": true
+    },
+    {
+      "name": "music key",
+      "group": "audio",
+      "value": "A minor, Am-F-C-G",
+      "estimated": true
+    },
+    {
+      "name": "music channel volume",
+      "group": "audio",
+      "value": -16,
+      "unit": "dB",
+      "source": "assets/audio/sounds.ron"
+    },
+    {
+      "name": "music polyphony",
+      "group": "audio",
+      "value": "looping on a dedicated channel",
+      "source": "src/audio.rs"
+    },
+    {
+      "name": "music fallback",
+      "group": "audio",
+      "value": "procedural chiptune generated at start-up",
+      "source": "src/audio.rs"
+    },
+    {
+      "name": "music toggle",
+      "group": "controls",
+      "value": "N",
+      "source": "src/audio.rs"
+    },
+    {
+      "name": "ball contact shadow",
+      "group": "display",
+      "value": "19x19 soft radial",
+      "estimated": true
+    },
+    {
+      "name": "ui compositing",
+      "group": "display",
+      "value": "sidebar slice only (672..960 of the UI texture)",
+      "estimated": true,
+      "source": "app/src/ui.rs"
+    },
+    {
+      "name": "mode menu location",
+      "group": "display",
+      "value": "right-hand sidebar, never over the playfield",
+      "source": "app/src/ui.rs"
+    },
+    {
+      "name": "startup display mode",
+      "group": "display",
+      "value": "borderless fullscreen",
+      "source": "request: the person asked for fullscreen"
+    },
+    {
+      "name": "windowed launch option",
+      "group": "controls",
+      "value": "--windowed",
+      "source": "app/src/main.rs"
+    },
+    {
+      "name": "fullscreen toggle keys",
+      "group": "controls",
+      "value": "F11 or Alt+Enter",
+      "source": "app/src/main.rs handle_fullscreen_keys"
+    },
+    {
+      "name": "fullscreen framing",
+      "group": "display",
+      "value": "4:3 content centred with dark bars; 1920x1080 -> 1440x1080 at x=240",
+      "source": "app/src/main.rs letterbox_rect"
+    },
+    {
+      "name": "capture runs windowed",
+      "group": "display",
+      "value": true,
+      "source": "app/src/main.rs: screenshot and self-test never change the person's display"
+    },
+    {
+      "name": "fullscreen hint",
+      "group": "display",
+      "value": "F11 FULLSCREEN / F11 WINDOWED in the sidebar",
+      "estimated": true
+    },
+    {
+      "name": "ui texture size",
+      "group": "display",
+      "value": "960x720",
+      "unit": "px",
+      "source": "app/src/ui.rs"
+    },
+    {
+      "name": "menu start keys",
+      "group": "controls",
+      "value": "Enter, Space, Z, M, Shift, arrows or left click",
+      "source": "app/src/main.rs"
+    },
+    {
+      "name": "quick start keys",
+      "group": "controls",
+      "value": "1 one player, 2 two players, 3 match play",
+      "source": "app/src/main.rs"
+    },
+    {
+      "name": "screenshot key",
+      "group": "controls",
+      "value": "F12 saves shots/screenshot.png",
+      "source": "app/src/main.rs"
+    },
+    {
+      "name": "ball rotation",
+      "group": "physics",
+      "value": "free rolling",
+      "estimated": true,
+      "source": "fix: rotation locked let static friction hold the ball on the 24 degree flipper"
+    },
+    {
+      "name": "flipper roll-off delay",
+      "group": "flippers",
+      "value": 0.75,
+      "unit": "s",
+      "estimated": true,
+      "source": "fix for the reported ball hanging on a flipper edge"
+    },
+    {
+      "name": "flipper roll-off speed threshold",
+      "group": "flippers",
+      "value": 55,
+      "unit": "px/s",
+      "estimated": true
+    },
+    {
+      "name": "flipper roll-off impulse",
+      "group": "flippers",
+      "value": "220 downhill + 55 off the face",
+      "unit": "px/s",
+      "estimated": true
+    },
+    {
+      "name": "start menu entries",
+      "group": "controls",
+      "value": 4,
+      "source": "app/src/ui.rs MENU_LABELS"
+    },
+    {
+      "name": "menu navigation",
+      "group": "controls",
+      "value": "Up/Down or W/S, wrapping through all four entries",
+      "source": "app/src/main.rs"
+    },
+    {
+      "name": "exit game",
+      "group": "controls",
+      "value": "EXIT GAME + Enter, or Escape at the start menu",
+      "source": "request (person asked for an exit option); app/src/main.rs"
+    }
+  ]
+}

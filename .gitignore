@@ -1,0 +1,15 @@
+# Rust build output (several gigabytes)
+/target
+
+# Runtime data and local test output
+/shots
+/selftest.json
+/selftest_3d.json
+/highscore.txt
+*.log
+
+# Editor/OS noise
+.DS_Store
+*.swp
+.idea/
+.vscode/

@@ -1,0 +1,36 @@
+[package]
+name = "rollerball"
+version = "1.0.0"
+edition = "2021"
+description = "A faithful 3D pinball remake inspired by the 1984 MSX classic Rollerball"
+
+[features]
+default = []
+
+[dependencies]
+bevy = { version = "0.20.1", default-features = false, features = [
+    "2d_bevy_render",
+    "3d_bevy_render",
+    "default_app",
+    "std",
+    "bevy_winit",
+    "x11",
+    "wayland",
+    "multi_threaded",
+    "png",
+    "tonemapping_luts",
+] }
+avian2d = { version = "0.8.0", default-features = false, features = ["2d", "parry-f32", "parallel"] }
+bevy_kira_audio = { version = "0.27.1", default-features = false, features = ["wav", "ogg"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+ron = "0.12"
+
+[patch.crates-io]
+alsa-sys = { path = "vendor/alsa-sys" }
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 2
