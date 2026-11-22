@@ -55,7 +55,8 @@ sudo apt install build-essential pkg-config libasound2-dev libudev-dev \
 ```
 
 The first build takes a few minutes because Bevy is large. The finished game
-runs straight from `target/release/rollerball`.
+runs straight from `target/release/rollerball`. It is built and tested on Linux
+(x86_64), where sound goes through ALSA.
 
 ## Run
 
