@@ -1,33 +1,36 @@
-# Rollerball audio
+# Rollerball-geluid
 
-The game looks in this folder for the files listed in `sounds.ron`.
-Accepted formats are `.wav` and `.ogg`. Either replace a listed filename with
-your own recording, or edit `sounds.ron` to point at a new file.
+Het spel zoekt in deze map de bestanden die in `sounds.ron` staan.
+Toegestane formaten zijn `.wav` en `.ogg`. Vervang een genoemd bestand door je
+eigen opname, of pas `sounds.ron` aan en wijs naar een nieuw bestand.
 
-The nineteen shipped clips are original recreations in the voice of the MSX
-AY-3-8910 PSG — three square-wave channels, noise, 16-step volume envelopes and
-short arpeggios — not samples from the 1984 game. They cover all fifteen sound
-events, and some events list more than one take:
+De negentien meegeleverde clips zijn originele nabootsingen in de stem van de
+MSX AY-3-8910 PSG — drie blokgolfkanalen, ruis, volumenveloppen met 16 stappen
+en korte arpeggio's — geen samples uit het spel van 1984. Ze dekken alle
+vijftien geluidsgebeurtenissen, en sommige gebeurtenissen hebben meer dan één
+variant:
 
-    flipper_hit.wav, flipper_hit_2.wav        (two takes)
-    bumper_hit.wav, _2.wav, _3.wav            (three takes)
-    rollover_lane.wav, rollover_lane_2.wav    (two takes)
+    flipper_hit.wav, flipper_hit_2.wav        (twee varianten)
+    bumper_hit.wav, _2.wav, _3.wav            (drie varianten)
+    rollover_lane.wav, rollover_lane_2.wav    (twee varianten)
 
-An event with several takes is played at random, so a string of bumper hits does
-not sound mechanically repeated. `slot_win` deliberately ships as `.ogg` to show
-both formats working.
+Een gebeurtenis met meerdere varianten wordt willekeurig afgespeeld, zodat een
+reeks bumpers niet mechanisch hetzelfde klinkt. `slot_win` wordt bewust als
+`.ogg` meegeleverd om te laten zien dat beide formaten werken.
 
-If you own a recording of the original table, drop the files in here under these
-names (or edit `sounds.ron`) and they are used on the next start; no rebuild is
-needed. Start-up reports the count, for example:
+Heb je een opname van de originele tafel, zet de bestanden dan onder deze namen
+in deze map (of pas `sounds.ron` aan); ze worden bij de volgende start gebruikt
+en je hoeft niets opnieuw te compileren. Bij het opstarten meldt het spel het
+aantal, bijvoorbeeld:
 
     Audio: 19 external sound file(s) ready, 0 event(s) using the procedural synth
 
-If a file is missing, empty, corrupt or has the wrong format, that event keeps
-working: the game synthesizes a short square/noise PSG-style sound for it
-instead. The start-up log names any event that needs the fallback.
+Ontbreekt een bestand, is het leeg, beschadigd of heeft het de verkeerde indeling,
+dan blijft die gebeurtenis werken: het spel maakt er zelf een korte vierkante/
+ruisige PSG-klank voor. Het opstartlogboek noemt elke gebeurtenis die de
+terugval nodig heeft.
 
-`volume_db` values are per-effect decibel trims. They are deliberately modest
-so several bumpers can sound at once without clipping.
+`volume_db` is een correctie in decibel per effect. De waarden zijn bewust
+bescheiden, zodat meerdere bumpers tegelijk kunnen klinken zonder te clippen.
 
-`../tools/generate_audio.py` rebuilds the shipped clips from code.
+`../tools/generate_audio.py` bouwt de meegeleverde clips opnieuw op vanuit code.

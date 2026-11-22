@@ -1,6 +1,6 @@
 [package]
 name = "rollerball"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 description = "A faithful 3D pinball remake inspired by the 1984 MSX classic Rollerball"
 

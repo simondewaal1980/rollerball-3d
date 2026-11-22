@@ -1,219 +1,224 @@
-# ROLLERBALL 3D — mechanics sheet
+# ROLLERBALL 3D — speelwaarden
 
-There is no original target in this workspace (clean-room rebuild from the
-written brief only). Every value below is either taken from the brief or marked
-**estimated**. The game was tuned to feel like a fast 1984-era video pinball
-table: heavy ball, lively bumpers, strong flippers, and a four-screen drop.
-The current presentation is a modern perspective-3D remake; the rules, physics
-rate and scoring are unchanged from the playable 2D build.
+Er is geen origineel doel in deze werkmap (een clean-room rebuild op basis van
+alleen de geschreven opdracht). Elke waarde hieronder komt ofwel uit de opdracht
+of is als **geschat** gemarkeerd. Het spel is afgesteld om te voelen als een
+snelle videoflipperkast uit 1984: een zware bal, levendige bumpers, krachtige
+flippers en een val over vier schermen. De huidige presentatie is een moderne
+3D-remake in perspectief; de regels, de physics-frequentie en de puntentelling
+zijn ongewijzigd ten opzichte van de speelbare 2D-versie.
 
-## Display and layout
+## Beeld en indeling
 
-| Value | Number | Source |
+| Waarde | Getal | Bron |
 |---|---|---|
-| Virtual canvas | 320 × 240 (4:3) | estimated; MSX-inspired. The brief names the original 256 × 192; this 1.25× canvas keeps the same 4:3 grid and is displayed with integer nearest-neighbour scaling. |
-| Window | 960 × 720 (3×) | estimated |
-| Startup display | borderless fullscreen on a normal launch; `--windowed` or any capture run keeps the 960 × 720 window | request (person asked for fullscreen) |
-| Fullscreen toggle | F11 or Alt+Enter switches fullscreen ↔ the centred 960 × 720 window | request |
-| Fullscreen framing | the 4:3 canvas stays centred with dark bars; a 1920 × 1080 screen shows a 1440 × 1080 table at x = 240, never stretched | derived from the 4:3 layout |
-| Fullscreen hint | "F11 FULLSCREEN" / "F11 WINDOWED" in the bottom of the sidebar | estimated |
-| Start menu entries | 1 PLAYER, 2 PLAYERS, MATCH PLAY, EXIT GAME (four rows in the sidebar) | request (person asked for an exit option) |
-| Exit game | select EXIT GAME and press Enter, or press Escape on the start menu | request |
-| Exit key safety | the exit row ignores Space and the flipper start keys, so a table-control press cannot quit by accident | estimated |
-| Capture runs | screenshot and self-test always stay windowed and unfocused | required for checks |
-| Playfield share | 224 px = 70% | brief |
-| HUD share | 96 px = 30% | brief |
-| Screens | 4 stacked, 240 px each | brief |
-| Table height | 960 px | derived |
-| Pixel filtering | nearest neighbour | brief |
-| HUD rows | PLAYER ONE, PLAYER TWO, HIGH SCORE, BONUS, BALLS | brief |
+| Virtueel doek | 320 × 240 (4:3) | geschat; MSX-geïnspireerd. De opdracht noemt de originele 256 × 192; dit doek van 1,25× houdt hetzelfde 4:3-raster en wordt met gehele nearest-neighbour-schaling weergegeven. |
+| Venster | 960 × 720 (3×) | geschat |
+| Beeld bij het starten | randloos volledig scherm bij een normale start; `--windowed` of een opname-run houdt het venster van 960 × 720 | opdracht (persoon vroeg om volledig scherm) |
+| Wisselen volledig scherm | F11 of Alt+Enter wisselt tussen volledig scherm en het gecentreerde venster van 960 × 720 | opdracht |
+| Kader in volledig scherm | het 4:3-doek blijft gecentreerd met donkere balken; een scherm van 1920 × 1080 toont een tafel van 1440 × 1080 op x = 240, nooit uitgerekt | afgeleid van de 4:3-indeling |
+| Hint volledig scherm | "F11 FULLSCREEN" / "F11 WINDOWED" onderaan de zijbalk | geschat |
+| Keuzes startmenu | 1 PLAYER, 2 PLAYERS, MATCH PLAY, EXIT GAME (vier regels in de zijbalk) | opdracht (persoon vroeg om een afsluitoptie) |
+| Spel afsluiten | kies EXIT GAME en druk op Enter, of druk op Escape in het startmenu | opdracht |
+| Veiligheid afsluitkeuze | de afsluitregel negeert Spatie en de flipper-starttoetsen, zodat een tafeltoets het spel niet per ongeluk kan sluiten | geschat |
+| Opname-runs | schermafbeelding en zelftest blijven altijd in een venster zonder focus | vereist voor de controles |
+| Aandeel speelveld | 224 px = 70% | opdracht |
+| Aandeel HUD | 96 px = 30% | opdracht |
+| Schermen | 4 gestapeld, elk 240 px | opdracht |
+| Hoogte tafel | 960 px | afgeleid |
+| Pixelfiltering | nearest neighbour | opdracht |
+| HUD-regels | PLAYER ONE, PLAYER TWO, HIGH SCORE, BONUS, BALLS | opdracht |
 
-## 3D presentation
+## 3D-presentatie
 
-| Value | Number | Source |
+| Waarde | Getal | Bron |
 |---|---|---|
-| Presentation | one perspective-3D cabinet, tilted camera | request |
-| Playfield art | rendered to a 448 x 1920 texture, nearest sampling, applied to the slab | estimated |
-| Camera field of view | 42° vertical | estimated |
-| Camera height | 315 table units above the playfield | estimated |
-| Camera back offset | 250 table units behind the ball's screen | estimated |
-| Camera look-ahead | 0 units (targets the current screen centre) | estimated |
-| Follow smoothing | exponential 11 /s, same clamp 120…840 | estimated; existing 2D follow |
-| Table slab | 238 x 974 x 12 units | estimated |
-| Cabinet rail height | 17 units | estimated |
-| Playfield surface | flat textured quad at z = 0.05 | estimated |
-| Ball height above surface | 5 units (sphere radius 5) | derived from ball radius |
-| Ball contact shadow | 19 x 19 soft radial shadow at z = 0.08 | estimated |
-| Bumper hardware | barrel r=12.2 h=8, crown r=13 h=1.8, chrome cap, glowing dot | estimated |
-| Flipper hardware | capsule radius 4.4, length 33.2, bright rubber top | estimated |
-| Slot cabinet | raised frame around the printed reels, three torus rims | estimated |
-| Drop targets | 18 x 6 x 7 raised bars, hide with the 2D target state | estimated |
-| Spinner | 28 x 2.6 x 10 chrome paddle, inherits the 2D spin | estimated |
-| Kickback holes | torus rings, red when empty, green when armed | estimated |
-| Plunger | chrome shaft, red knob, four spring rings, 7-unit travel | estimated |
-| Backdrop | 920 x 1500 starfield plane at z = -150 | estimated |
-| Lighting | one 9 000 lux directional light, 320 cd/m² ambient, four coloured point lights (2 200 000 lm, range 260) | estimated |
-| Bloom | 0.12 | estimated |
-| UI compositing | fixed 960 x 720 opaque UI texture; only the right 672…960 sidebar slice is composited over the 3D table | estimated |
-| UI texture size | fixed 960 x 720 regardless of window size, so fullscreen does not rebuild textures | derived |
-| Camera viewports | table left 70% and sidebar 30% of the centred 4:3 rectangle | brief |
-| Mode menu location | inside the sidebar (right 30%), never over the playfield | estimated |
-| HUD viewport | left 70% table, right 30% sidebar | brief |
+| Presentatie | één kast in perspectief, gekantelde camera | opdracht |
+| Kunst speelveld | gerenderd naar een textuur van 448 x 1920, nearest sampling, op de plaat gelegd | geschat |
+| Beeldhoek camera | 42° verticaal | geschat |
+| Hoogte camera | 315 tafeleenheden boven het speelveld | geschat |
+| Afstand camera naar achteren | 250 tafeleenheden achter het scherm van de bal | geschat |
+| Vooruitkijken camera | 0 eenheden (richt op het midden van het huidige scherm) | geschat |
+| Volgdeming | exponentieel 11 /s, zelfde begrenzing 120…840 | geschat; bestaande 2D-volging |
+| Tafelplaat | 238 x 974 x 12 eenheden | geschat |
+| Hoogte kastrand | 17 eenheden | geschat |
+| Oppervlak speelveld | platte textuurquad op z = 0,05 | geschat |
+| Hoogte bal boven oppervlak | 5 eenheden (bolstraal 5) | afgeleid van de balstraal |
+| Contactschaduw bal | zachte radiale schaduw van 19 x 19 op z = 0,08 | geschat |
+| Bumperhardware | cilinder r=12,2 h=8, kroon r=13 h=1,8, chromen kap, oplichtende stip | geschat |
+| Flipperhardware | capsuleradius 4,4, lengte 33,2, helder rubber bovenop | geschat |
+| Gokkast | verhoogd frame rond de bedrukte rollen, drie torusranden | geschat |
+| Drop targets | verhoogde staven van 18 x 6 x 7, verborgen met de 2D-doelstatus | geschat |
+| Spinner | chromen peddel van 28 x 2,6 x 10, erft de 2D-draai | geschat |
+| Kickback-gaten | torusringen, rood als ze leeg zijn, groen als ze scherp staan | geschat |
+| Plunger | chromen schacht, rode knop, vier veerringen, slag van 7 eenheden | geschat |
+| Achtergrond | sterrenveldvlak van 920 x 1500 op z = -150 | geschat |
+| Belichting | één richtlicht van 9 000 lux, omgevingslicht van 320 cd/m², vier gekleurde puntlichten (2 200 000 lm, bereik 260) | geschat |
+| Bloom | 0,12 | geschat |
+| UI-samenstelling | vaste ondoorzichtige UI-textuur van 960 x 720; alleen de zijbalkstrook 672…960 wordt over de 3D-tafel samengesteld | geschat |
+| Grootte UI-textuur | vast 960 x 720 ongeacht de venstergrootte, zodat volledig scherm geen texturen opnieuw opbouwt | afgeleid |
+| Camerapanelen | tafel links 70% en zijbalk 30% van het gecentreerde 4:3-rechthoek | opdracht |
+| Plaats modusmenu | in de zijbalk (rechter 30%), nooit over het speelveld | geschat |
+| HUD-paneel | links 70% tafel, rechts 30% zijbalk | opdracht |
 
 ## Physics
 
-| Value | Number | Source |
+| Waarde | Getal | Bron |
 |---|---|---|
-| Fixed physics rate | 120 Hz | brief |
-| CCD | swept CCD against all body types + speculative CCD on ball | brief |
-| Gravity | 1500 px/s² downward | estimated |
-| Ball radius | 5 px | estimated |
-| Ball restitution | 0.30 (combine: max) | estimated |
-| Ball friction | 0.06 (combine: min) | estimated |
-| Ball rotation | free rolling (not locked) | estimated fix: a locked ball could be held forever by static friction on the 24° flipper |
-| Wall restitution | 0.45 | estimated |
-| Wall friction | 0.08 | estimated |
-| Resting / stuck watchdog | 6 s slow-ball nudge; 1 s lane relaunch; 1.1 s slot-cabinet sideways shove; 0.75 s flipper roll-off shove | estimated |
-| Ball spawn | launch lane, x = 208.5, y = 30 | estimated |
+| Vaste physics-frequentie | 120 Hz | opdracht |
+| CCD | swept CCD tegen alle lichaamstypes + speculative CCD op de bal | opdracht |
+| Zwaartekracht | 1500 px/s² omlaag | geschat |
+| Balstraal | 5 px | geschat |
+| Restitutie bal | 0,30 (combine: max) | geschat |
+| Wrijving bal | 0,06 (combine: min) | geschat |
+| Rotatie bal | vrij rollend (niet vastgezet) | geschatte oplossing: een vastgezette bal kon door statische wrijving op de flipper van 24° eeuwig worden vastgehouden |
+| Restitutie muur | 0,45 | geschat |
+| Wrijving muur | 0,08 | geschat |
+| Rust- / vastloopbewaking | duwtje voor langzame bal na 6 s; herstart in de baan na 1 s; zetje opzij bij de gokkast na 1,1 s; afrolduwtje van de flipper na 0,75 s | geschat |
+| Startpositie bal | lanceerbaan, x = 208,5, y = 30 | geschat |
 
 ## Flippers
 
-| Value | Number | Source |
+| Waarde | Getal | Bron |
 |---|---|---|
-| Flipper length | 42 px physics (capsule) / 48 px art | estimated |
-| Flipper width | 7 px physics / 10 px art | estimated |
-| Pivot x | 62 px and 162 px | estimated |
-| Pivot y | screen bottom + 38 px | estimated |
-| Rest angle | ±24° from horizontal | estimated |
-| Raised angle | ∓24° (48° total sweep) | brief: limited rotation |
-| Raise top speed | 30 rad/s, accelerated at 1500 rad/s² | estimated |
-| Return top speed | 13 rad/s, accelerated at 320 rad/s² | estimated |
-| End-stop braking | 2400 rad/s², exact clamp at 0° and 48° | estimated |
-| Full stroke time | about 0.033 s up / 0.075 s back | derived |
-| Motion clock | fixed 120 Hz physics delta (frame-rate independent) | derived |
-| Contact impulse | up to 1500 px/s along the working face; strength grows with distance from the pivot (about 300 px/s at the hinge, 900–1500 px/s at the tip) | estimated |
-| Held / stationary flipper | passive surface: no launch; a held flipper skips the rescue, otherwise a slow ball rolls or is nudged off | estimated |
-| Kick cooldown | 0.06 s per flipper | estimated |
-| Rubber | restitution 0.25, friction 0.35 (combine max) | estimated fix: 0.9 exceeded tan(24°) and let a still ball hang on the face |
-| Flipper roll-off rescue | after 0.75 s below 55 px/s on a non-driven flipper: 220 px/s downhill + 55 px/s off the face | estimated fix for the reported hang |
-| Funnel end gap | 14 px outlane between wall end and pivot | estimated |
-| Active flippers | only the pair on the current camera screen | brief |
+| Flipperlengte | 42 px physics (capsule) / 48 px kunst | geschat |
+| Flipperbreedte | 7 px physics / 10 px kunst | geschat |
+| Draaipunt x | 62 px en 162 px | geschat |
+| Draaipunt y | onderkant scherm + 38 px | geschat |
+| Rusthoek | ±24° ten opzichte van horizontaal | geschat |
+| Opgeheven hoek | ∓24° (totale zwaai 48°) | opdracht: beperkte rotatie |
+| Topsnelheid omhoog | 30 rad/s, versneld met 1500 rad/s² | geschat |
+| Topsnelheid terug | 13 rad/s, versneld met 320 rad/s² | geschat |
+| Remmen op eindstand | 2400 rad/s², exact begrensd op 0° en 48° | geschat |
+| Duur volledige slag | ongeveer 0,033 s omhoog / 0,075 s terug | afgeleid |
+| Bewegingsklok | vaste physicsdelta van 120 Hz (onafhankelijk van framerate) | afgeleid |
+| Contactimpuls | tot 1500 px/s langs het werkende vlak; sterkte groeit met de afstand tot het draaipunt (ongeveer 300 px/s bij het scharnier, 900–1500 px/s aan de punt) | geschat |
+| Vastgehouden / stilstaande flipper | passief oppervlak: geen lancering; een vastgehouden flipper slaat de redding over, anders rolt of duwt een langzame bal eraf | geschat |
+| Wachttijd tussen trappen | 0,06 s per flipper | geschat |
+| Rubber | restitutie 0,25, wrijving 0,35 (combine max) | geschatte oplossing: 0,9 was hoger dan tan(24°) en liet een stilstaande bal aan het vlak hangen |
+| Afrolredding flipper | na 0,75 s onder 55 px/s op een niet-aangedreven flipper: 220 px/s bergafwaarts + 55 px/s van het vlak af | geschatte oplossing voor het gemelde blijven hangen |
+| Opening aan einde trechter | uitloop van 14 px tussen einde muur en draaipunt | geschat |
+| Actieve flippers | alleen het paar op het scherm waar de camera staat | opdracht |
 
 ## Plunger
 
-| Value | Number | Source |
+| Waarde | Getal | Bron |
 |---|---|---|
-| Charge time to full | 0.95 s | estimated |
-| Launch speed | 1760 + 620 × charge px/s | estimated |
-| Minimum / maximum speed | 1760 / 2380 px/s | estimated |
-| Lane exit trigger | y ≥ 880 px | estimated |
-| Exit hand-off | placed at (188, 908) with velocity (−310, 150) px/s | estimated |
+| Oplaadtijd tot vol | 0,95 s | geschat |
+| Lanceersnelheid | 1760 + 620 × lading px/s | geschat |
+| Minimum- / maximumsnelheid | 1760 / 2380 px/s | geschat |
+| Trigger baanuitgang | y ≥ 880 px | geschat |
+| Overdracht bij uitgang | geplaatst op (188, 908) met snelheid (−310, 150) px/s | geschat |
 
-The launch lane is one-way: the ball is handed into the top screen after the
-shot instead of falling back into the chute.
+De lanceerbaan is eenrichtingsverkeer: de bal wordt na het schot in het
+bovenste scherm geplaatst in plaats van terug te vallen in de goot.
 
 ## Camera
 
-| Value | Number | Source |
+| Waarde | Getal | Bron |
 |---|---|---|
-| View height | 240 px | derived |
-| Follow smoothing | exponential, 11 /s | estimated |
-| Vertical clamp | 120 … 840 px | derived |
-| At top/bottom | camera snaps to the clamp so a fast ball is never off-screen | estimated |
+| Hoogte beeld | 240 px | afgeleid |
+| Volgdeming | exponentieel, 11 /s | geschat |
+| Verticale begrenzing | 120 … 840 px | afgeleid |
+| Boven / onder | de camera springt naar de begrenzing, zodat een snelle bal nooit buiten beeld raakt | geschat |
 
-## Scoring
+## Puntentelling
 
-| Event | Points | Other effect | Source |
+| Gebeurtenis | Punten | Ander effect | Bron |
 |---|---|---|---|
-| Bumper | 100 | bounce kick | estimated |
-| Slingshot | 50 | strong kick | estimated |
-| A/B/C rollover / arrow | 250 | +100 bonus | estimated |
-| Complete A+B+C | 2 500 | +1 000 bonus, +1 multiplier; arms kickbacks | estimated |
-| Drop target | 500 | +100 bonus | estimated |
-| All three drop targets | 5 000 | +1 000 bonus, +1 multiplier, reset after 1.6 s | estimated |
-| Spinner entry | 100 | spins the spinner | estimated |
-| Slot start | 200 | starts reels | estimated |
-| Kickback hole (armed) | 1 000 | strong save; disarms | estimated |
-| Kickback hole (empty) | 100 | weak bounce | estimated |
-| Chute | 100 | chute sound | estimated |
-| Bonus start | 1 000 | resets every ball | estimated |
-| Bonus multiplier | ×1 start | increased by ABC/Slot/Drop wins | brief |
-| End-of-ball bonus | BONUS × multiplier, 20 ticks × 0.075 s after 0.35 s delay | added to score audibly and visibly | brief |
-| Balls per player | 3 | extra balls add one | brief |
-| Match Play start | 5 000 each | your points are subtracted from the opponent | brief (optional mode) |
+| Bumper | 100 | stuiterzetje | geschat |
+| Slingshot | 50 | krachtige trap | geschat |
+| A/B/C-rollover / pijl | 250 | +100 bonus | geschat |
+| A+B+C voltooid | 2 500 | +1 000 bonus, +1 vermenigvuldiger; kickbacks scherp | geschat |
+| Drop target | 500 | +100 bonus | geschat |
+| Alle drie drop targets | 5 000 | +1 000 bonus, +1 vermenigvuldiger, na 1,6 s reset | geschat |
+| Ingang spinner | 100 | laat de spinner draaien | geschat |
+| Start gokkast | 200 | start de rollen | geschat |
+| Kickback-gat (scherp) | 1 000 | krachtige redding; ontwapent | geschat |
+| Kickback-gat (leeg) | 100 | zwakke stuiter | geschat |
+| Goot | 100 | gootgeluid | geschat |
+| Start bonus | 1 000 | reset bij elke bal | geschat |
+| Bonusvermenigvuldiger | ×1 bij de start | verhoogd door winst op ABC / gokkast / drop targets | opdracht |
+| Bonus aan einde bal | BONUS × vermenigvuldiger, 20 tikken × 0,075 s na 0,35 s wachttijd | hoorbaar en zichtbaar bij de score opgeteld | opdracht |
+| Ballen per speler | 3 | extra ballen voegen er één toe | opdracht |
+| Start Match Play | 5 000 elk | jouw punten worden bij de tegenstander afgetrokken | opdracht (optionele modus) |
 
-## Slot machine (screen 2)
+## Gokkast (scherm 2)
 
-| Value | Number | Source |
+| Waarde | Getal | Bron |
 |---|---|---|
-| Symbols | bell, cherries, aubergine | brief |
-| Spin time / stops | 0.85 s, 1.20 s, 1.55 s | estimated |
-| Reel refresh | 0.075 s | estimated |
-| Cooldown after spin | 2.5 s | estimated |
-| Three bells | +3 000 and an extra ball | estimated |
-| Three cherries | +2 000, +1 multiplier, +1 000 bonus | estimated |
-| Three aubergines | +5 000 | estimated |
-| Any pair | +500 | estimated |
-| No match | +100 | estimated |
-| Cabinet footprint | 88 × 38 px solid box at (112, 620) | estimated |
-| Cabinet cap | 12 px high peaked roof, 44 px slopes at about 15°, 3 px thick | estimated fix |
-| Slot-area escape | if the ball stays under 40 px/s near the cabinet for 1.1 s, add 300 px/s sideways and 260 px/s up | estimated fix |
+| Symbolen | bel, kersen, aubergine | opdracht |
+| Draaitijd / stops | 0,85 s, 1,20 s, 1,55 s | geschat |
+| Verversing rollen | 0,075 s | geschat |
+| Wachttijd na draai | 2,5 s | geschat |
+| Drie bellen | +3 000 en een extra bal | geschat |
+| Drie kersen | +2 000, +1 vermenigvuldiger, +1 000 bonus | geschat |
+| Drie aubergines | +5 000 | geschat |
+| Elk paar | +500 | geschat |
+| Geen match | +100 | geschat |
+| Voetafdruk kast | massief vak van 88 × 38 px op (112, 620) | geschat |
+| Dak van de kast | puntdak van 12 px hoog, 44 px hellingen van ongeveer 15°, 3 px dik | geschatte oplossing |
+| Ontsnapping gokkastgebied | blijft de bal 1,1 s onder 40 px/s bij de kast, voeg dan 300 px/s opzij en 260 px/s omhoog toe | geschatte oplossing |
 
 ## Nudge / tilt
 
-| Value | Number | Source |
+| Waarde | Getal | Bron |
 |---|---|---|
-| Nudge impulse | ±210 px/s horizontal, +330 px/s up | estimated |
-| Nudge limit | 3 within a 3 s window | brief: short cooldown / tilt limit |
-| Tilt | 3 s with flippers disabled | estimated |
+| Nudge-impuls | ±210 px/s horizontaal, +330 px/s omhoog | geschat |
+| Nudgelimiet | 3 binnen een venster van 3 s | opdracht: korte wachttijd / tiltlimiet |
+| Tilt | 3 s met uitgeschakelde flippers | geschat |
 
-## Controls
+## Besturing
 
-| Action | Keys | Source |
+| Actie | Toetsen | Bron |
 |---|---|---|
-| Left flipper | Left Shift, Z, Left Arrow | brief |
-| Right flipper | Right Shift, M, Right Arrow | brief |
-| Plunger | hold and release Space | brief |
-| Nudge | W or Up Arrow | brief |
-| Start / confirm | Enter, Space, Z, M, Left/Right Shift, Left/Right Arrow or left mouse click | estimated |
-| Quick start | 1 = one player, 2 = two players, 3 = Match Play | estimated |
-| Menu navigation | Up/Down or W/S, wraps through the four entries | estimated |
-| Exit game | select EXIT GAME + Enter, or Escape at the start menu | request |
-| Pause | P | estimated |
-| Music on/off | N | estimated addition |
-| Screenshot | F12 writes shots/screenshot.png | addition |
-| Back to menu | Escape | estimated |
+| Linkerflipper | Linker Shift, Z, pijltje links | opdracht |
+| Rechterflipper | Rechter Shift, M, pijltje rechts | opdracht |
+| Plunger | Spatie ingedrukt houden en loslaten | opdracht |
+| Nudge | W of pijltje omhoog | opdracht |
+| Starten / bevestigen | Enter, Spatie, Z, M, linker/rechter Shift, pijltje links/rechts of klik met de linkermuisknop | geschat |
+| Snel starten | 1 = één speler, 2 = twee spelers, 3 = Match Play | geschat |
+| Menunavigatie | Omhoog/Omlaag of W/S, loopt door de vier keuzes | geschat |
+| Spel afsluiten | kies EXIT GAME + Enter, of Escape in het startmenu | opdracht |
+| Pauze | P | geschat |
+| Muziek aan/uit | N | geschatte toevoeging |
+| Schermafbeelding | F12 schrijft shots/screenshot.png | toevoeging |
+| Terug naar menu | Escape | geschat |
 
-## Audio
+## Geluid
 
-| Value | Setting | Source |
+| Waarde | Instelling | Bron |
 |---|---|---|
-| Backend | bevy_kira_audio / Kira; overlapping voices are mixed by Kira | brief |
-| Files | `assets/audio/*.wav` and `.ogg`, mapped by `sounds.ron` | brief |
-| Shipped clips | 19 files (18 WAV + 1 OGG) covering 15 events | `assets/audio/sounds.ron` |
-| Style of shipped clips | original AY-3-8910-style recreations: 3 square channels, noise, 16-step envelopes, sweeps, arpeggios; not original recordings | estimated; `tools/generate_audio.py` |
-| Variation | bumper 3 takes, flipper 2, rollover lane 2; one chosen at random per hit | estimated |
-| Loading | every file is decoded before playback; a missing, empty, corrupt or wrong-format file uses the synth instead of a silent handle | `src/audio.rs` |
-| Fallback | built-in square/triangle/noise PSG patches for all 15 events | brief |
-| Event voices | max 16 queued per frame; per-effect trims of −7 to −14 dB under a −6 dB channel | estimated |
-| Polyphony guard | dedicated SFX channel with a 3:1 compressor at −14 dB (4 ms attack, 140 ms release) | estimated |
-| Events | Start, PlungerCharge, PlungerRelease, FlipperHit, BumperHit, RolloverLane, SlotSpin, SlotWin, ChuteDrop, BonusCountdownTick, BallDrain, GameOver, Kickback, ExtraBall, Tilt | brief + estimated additions |
-| Start jingle | 1.25 s PSG fanfare when a game begins | estimated |
-| Tilt | 0.75 s buzzer (the old build wrongly used the game-over sting) | estimated |
-| Kickback | 0.40 s thump/whoosh when an armed kickback hole fires | estimated |
-| Extra ball | 0.95 s rising fanfare when three bells award a ball | estimated |
+| Backend | bevy_kira_audio / Kira; overlappende stemmen worden door Kira gemengd | opdracht |
+| Bestanden | `assets/audio/*.wav` en `.ogg`, gekoppeld via `sounds.ron` | opdracht |
+| Meegeleverde clips | 19 bestanden (18 WAV + 1 OGG) voor 15 gebeurtenissen | `assets/audio/sounds.ron` |
+| Stijl meegeleverde clips | originele nabootsingen in AY-3-8910-stijl: 3 blokgolfkanalen, ruis, enveloppen met 16 stappen, glijders, arpeggio's; geen originele opnamen | geschat; `tools/generate_audio.py` |
+| Variatie | bumper 3 varianten, flipper 2, rollover-baan 2; per treffer willekeurig één gekozen | geschat |
+| Laden | elk bestand wordt vóór het afspelen gedecodeerd; een ontbrekend, leeg, beschadigd of verkeerd bestand gebruikt de synth in plaats van een stille handle | `src/audio.rs` |
+| Terugval | ingebouwde blokgolf-/driehoek-/ruis-PSG-klanken voor alle 15 gebeurtenissen | opdracht |
+| Stemmen per gebeurtenis | max. 16 per frame in de wachtrij; trims per effect van −7 tot −14 dB onder een kanaal van −6 dB | geschat |
+| Polyfoniebewaking | eigen SFX-kanaal met een compressor van 3:1 op −14 dB (4 ms attack, 140 ms release) | geschat |
+| Gebeurtenissen | Start, PlungerCharge, PlungerRelease, FlipperHit, BumperHit, RolloverLane, SlotSpin, SlotWin, ChuteDrop, BonusCountdownTick, BallDrain, GameOver, Kickback, ExtraBall, Tilt | opdracht + geschatte toevoegingen |
+| Startjingle | PSG-fanfare van 1,25 s wanneer een spel begint | geschat |
+| Tilt | zoemer van 0,75 s (de oude build gebruikte ten onrechte de game-over-toon) | geschat |
+| Kickback | dreun/whoosh van 0,40 s wanneer een scherp kickback-gat afgaat | geschat |
+| Extra bal | stijgende fanfare van 0,95 s wanneer drie bellen een bal geven | geschat |
 
-## Background music
+## Achtergrondmuziek
 
-| Value | Number | Source |
+| Waarde | Getal | Bron |
 |---|---|---|
-| Track | `assets/audio/music_theme.wav`, mapped by `music` in `sounds.ron` | request |
-| Style | original early-80s 8-bit pinball chiptune, two squares + triangle bass + noise drums | request |
-| Tempo / length | 126 BPM, 8 bars, 15.24 s seamless loop | estimated; file measured |
-| Key / progression | A minor, Am–F–C–G | estimated |
-| Channel | dedicated Kira channel at −16 dB, separate from the SFX compressor | estimated |
-| Polyphony | loops continuously; effects mix on top | request |
-| Toggle | N mutes/unmutes without touching the effects | estimated addition |
-| Fallback | if the file is missing/corrupt, `synth_music()` builds a procedural 8-bit loop at start-up | estimated |
-| Format support | `.wav` and `.ogg` via the same decoder as the effects | brief |
-| Ownership | composed for this remake; no 1984 recording or sample is shipped | clean-room |
+| Nummer | `assets/audio/music_theme.wav`, gekoppeld via `music` in `sounds.ron` | opdracht |
+| Stijl | originele 8-bit flipperkastchiptune uit het vroege 8-bit-tijdperk, twee blokgolven + driehoeksbas + ruisdrums | opdracht |
+| Tempo / lengte | 126 BPM, 8 maten, naadloze lus van 15,24 s | geschat; bestand gemeten |
+| Toonsoort / progressie | a-klein, Am–F–C–G | geschat |
+| Kanaal | eigen Kira-kanaal op −16 dB, apart van de SFX-compressor | geschat |
+| Polyfonie | loopt continu; effecten mengen eroverheen | opdracht |
+| Schakelaar | N dempt/ontdempt zonder de effecten te raken | geschatte toevoeging |
+| Terugval | ontbreekt of is het bestand beschadigd, dan bouwt `synth_music()` bij het starten een procedurele 8-bit-lus | geschat |
+| Formaatondersteuning | `.wav` en `.ogg` via dezelfde decoder als de effecten | opdracht |
+| Eigendom | gecomponeerd voor deze remake; geen opname of sample uit 1984 wordt meegeleverd | clean-room |
+
+*De machineleesbare versie van deze waarden staat in `mechanics.json`. Daarin
+blijven de veldnamen Engels, omdat de controlefuncties van de werkmap ze zo
+lezen; de betekenis is dezelfde als in deze Nederlandse tabel.*

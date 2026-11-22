@@ -1,53 +1,55 @@
 # ROLLERBALL 3D
 
-![The four-screen table in perspective 3D, with the fixed retro sidebar on the right](docs/screenshot.png)
+![De vier schermen tellende tafel in perspectief, met de vaste retro-zijbalk rechts](docs/screenshot.png)
 
-A playable four-screen pinball game in Rust with Bevy 0.20 and Avian2D 0.8.
-It is a clean-room tribute to the 1984 MSX pinball classic, rebuilt in a modern
-perspective-3D style: four stacked screens, flippers on every screen, A/B/C
-lanes, bumpers, slingshots, drop targets, kickback holes, a three-reel slot
-machine, bonus countdown, three balls, 1P/2P and a Match Play score attack.
+Een speelbare flipperkast met vier schermen, gemaakt in Rust met Bevy 0.20 en
+Avian2D 0.8. Het is een clean-room eerbetoon aan de MSX-flipperklassieker
+*Rollerball* uit 1984, opnieuw opgebouwd in een moderne 3D-stijl: vier
+gestapelde schermen, flippers op elk scherm, A/B/C-banen, bumpers, slingshots,
+drop targets, kickback-gaten, een gokkast met drie rollen, een bonusaftelling,
+drie ballen, 1P/2P en een Match Play-scoreduel.
 
-The rules and the 120 Hz physics stay the same as the earlier 2D build. The
-presentation is now a tilted 3D cabinet: a printed playfield is laid on a
-slab, and raised rails, chrome posts, glowing bumpers, a three-reel cabinet,
-a plunger and a polished steel ball sit above it. The camera follows the ball
-smoothly up and down the four screens. The right-hand 30% sidebar is still a
-fixed, deliberately retro HUD.
+De regels en de physics op 120 Hz zijn dezelfde als in de eerdere 2D-versie.
+De presentatie is nu een gekantelde 3D-kast: een bedrukt speelveld ligt op een
+plaat, met verhoogde randen, chromen palen, oplichtende bumpers, een kast met
+drie rollen, een plunger en een gepolijste stalen bal erboven. De camera volgt
+de bal soepel omhoog en omlaag over de vier schermen. De zijbalk rechts is nog
+steeds een vaste, bewust retro HUD van 30% van de breedte.
 
-There is also an original looping 8-bit pinball soundtrack on its own audio
-channel, with the N key as a mute switch.
+Er is ook een originele, continu lopende 8-bit flipperkastmuziek op een eigen
+audiokanaal, met de toets N als demper.
 
-The mode menu sits inside the fixed sidebar instead of covering the table, so
-the cabinet is visible and playable from the very first frame. Enter, Space, a
-flipper key or a mouse click starts a one-player game; 2 and 3 jump straight
-into two-player or Match Play. Arrow keys (or W/S) move the highlight, and the
-fourth entry, EXIT GAME, closes the game with Enter — useful in fullscreen,
-where there is no window close button. Escape on the start menu does the same.
-As soon as a game starts the mode labels are replaced by the live scores, floor
-name and messages. F12 saves a screenshot.
+Het modusmenu staat in de vaste zijbalk in plaats van over de tafel, zodat de
+kast vanaf het eerste beeld zichtbaar en bespeelbaar is. Enter, Spatie, een
+flipperknop of een muisklik start een spel voor één speler; 2 en 3 springen
+direct naar twee spelers of Match Play. Met de pijltjes (of W/S) verplaats je
+de markering, en de vierde keuze, EXIT GAME, sluit het spel met Enter — handig
+in volledig scherm, waar geen sluitknop van het venster is. Escape doet op het
+startmenu hetzelfde. Zodra een spel begint, maken de moduslabels plaats voor de
+live scores, de naam van het scherm en de meldingen. F12 slaat een schermafbeelding op.
 
-The playfield background is the supplied space artwork
-(`assets/backgrounds/space_background.png`): the planet sits on the bottom
-screen and the glowing ball trails sweep up the top screen. A widescreen photo
-cannot be stretched onto a 224 x 960 table without distortion, so it is cut into
-four aspect-correct columns, one per screen, with a dark wash on top to keep the
-inserts and score panels readable.
+De achtergrond van het speelveld is het aangeleverde ruimtebeeld
+(`assets/backgrounds/space_background.png`): de planeet staat op het onderste
+scherm en de oplichtende sporen van de bal lopen omhoog over het bovenste
+scherm. Een breedbeeld foto kan niet zonder vervorming op een tafel van
+224 x 960 worden uitgerekt, dus hij wordt in vier beeldverhoudinggetrouwe
+kolommen geknipt, één per scherm, met een donkere waas eroverheen zodat de
+inserts en scorepanelen leesbaar blijven.
 
-## Get it
+## Downloaden
 
-The source is on GitHub:
+De broncode staat op GitHub:
 <https://github.com/simondewaal1980/rollerball-3d>
 
-### Ready to play (Linux, no Rust needed)
+### Kant-en-klaar spelen (Linux, geen Rust nodig)
 
-The [latest release](https://github.com/simondewaal1980/rollerball-3d/releases/latest)
-has a ready-to-run Linux x86_64 build. Unpack the folder, keep `assets` next to
-the program, and start `./rollerball`. `LEESMIJ.txt` in the download (and
-`docs/RUN-LINUX.txt` in the source) has the same steps in Dutch, with the full
-key list.
+De [nieuwste release](https://github.com/simondewaal1980/rollerball-3d/releases/latest)
+bevat een kant-en-klare Linux x86_64-versie. Pak de map uit, laat `assets` naast
+het programma staan en start `./rollerball`. `LEESMIJ.txt` in de download (en
+`docs/RUN-LINUX.txt` in de broncode) bevat dezelfde stappen in het Nederlands,
+met de volledige toetsenlijst.
 
-### Build from source
+### Zelf bouwen
 
 ```sh
 git clone https://github.com/simondewaal1980/rollerball-3d
@@ -55,8 +57,8 @@ cd rollerball-3d
 cargo run --release
 ```
 
-You need a recent stable Rust toolchain (`rustup` installs it). On Debian or
-Ubuntu the window and audio libraries come from:
+Je hebt een recente stabiele Rust-toolchain nodig (`rustup` installeert die).
+Op Debian of Ubuntu komen de venster- en audiobibliotheken uit:
 
 ```sh
 sudo apt install build-essential pkg-config libasound2-dev libudev-dev \
@@ -64,124 +66,130 @@ sudo apt install build-essential pkg-config libasound2-dev libudev-dev \
   libxkbcommon-dev
 ```
 
-The first build takes a few minutes because Bevy is large. The finished game
-runs straight from `target/release/rollerball`. It is built and tested on Linux
-(x86_64), where sound goes through ALSA.
+De eerste build duurt een paar minuten, omdat Bevy groot is. Het voltooide spel
+start direct vanuit `target/release/rollerball`. Het is gebouwd en getest op
+Linux (x86_64), waar geluid via ALSA loopt.
 
-## Run
+## Starten
 
 ```sh
 cargo run --release
 ```
 
-The game opens in borderless fullscreen on the current monitor. The whole
-320 x 240 pinball canvas stays at its 4:3 proportions and is centred with dark
-bars, so nothing is stretched on a widescreen display. Press F11 (or Alt+Enter)
-at any time to switch back to the 960 x 720 window, and the same keys return to
-fullscreen. The bottom of the sidebar always shows the current key. Start with
+Het spel opent in randloos volledig scherm op de huidige monitor. Het complete
+flipperdoek van 320 x 240 blijft op zijn 4:3-verhouding en wordt gecentreerd met
+donkere balken, zodat er op een breedbeeldscherm niets wordt uitgerekt. Met F11
+(of Alt+Enter) schakel je op elk moment terug naar het venster van 960 x 720;
+dezelfde toetsen gaan weer naar volledig scherm. Onderaan de zijbalk staat
+altijd de actuele toets. Begin met
 
 ```sh
 cargo run --release -- --windowed
 ```
 
-to keep the small window from the first frame.
+om vanaf het eerste beeld het kleine venster te houden.
 
-For a quick automated check:
+Voor een snelle automatische controle:
 
 ```sh
 cargo run -- --screenshot shots/table.png
 cargo run -- --self-test selftest.json
 ```
 
-The screenshot option opens the window without requesting focus and exits after
-saving the picture. The self-test looks at the start menu (including the EXIT
-GAME entry), presses the same start key a player uses, charges and releases the
-plunger, flips, measures the ball, flipper and HUD, checks that the mode menu
-leaves the sidebar, drops the ball in above the slot machine to confirm it rolls
-clear, rests a ball on the rounded edge of a flipper to confirm it rolls off
-instead of hanging, writes its JSON result and exits.
+De schermafbeeldingoptie opent het venster zonder de aandacht op te eisen en
+sluit af nadat de afbeelding is opgeslagen. De zelftest bekijkt het startmenu
+(inclusief de keuze EXIT GAME), drukt op dezelfde starttoets als een speler,
+laadt en lost de plunger, flipt, meet de bal, de flipper en de HUD, controleert
+dat het modusmenu uit de zijbalk verdwijnt, laat de bal boven de gokkast vallen
+om te bevestigen dat hij vrij doorrolt, en legt een bal op de afgeronde rand van
+een flipper om te bevestigen dat hij eraf rolt in plaats van blijft hangen.
+Daarna schrijft hij het JSON-resultaat en sluit af.
 
-## Controls
+## Besturing
 
-| Action | Keys |
+| Actie | Toetsen |
 |---|---|
-| Left flipper | Left Shift, Z, Left Arrow |
-| Right flipper | Right Shift, M, Right Arrow |
-| Plunger | Hold Space, release to shoot |
-| Nudge / tilt warning | W or Up Arrow |
-| Start / confirm | Enter, Space, Z/M, Left/Right Shift, Left/Right Arrow or mouse click |
-| Quick start | 1 one player, 2 two players, 3 Match Play |
-| Pause | P |
-| Fullscreen / window | F11 or Alt+Enter |
-| Music on/off | N |
-| Screenshot | F12 (saves `shots/screenshot.png`) |
-| Back to menu | Escape |
-| Exit game | EXIT GAME on the start menu, then Enter; Escape at the start menu also quits |
+| Linkerflipper | Linker Shift, Z, pijltje links |
+| Rechterflipper | Rechter Shift, M, pijltje rechts |
+| Plunger | Spatie ingedrukt houden, loslaten om te schieten |
+| Nudge / tiltwaarschuwing | W of pijltje omhoog |
+| Starten / bevestigen | Enter, Spatie, Z/M, linker/rechter Shift, pijltje links/rechts of een muisklik |
+| Snel starten | 1 één speler, 2 twee spelers, 3 Match Play |
+| Pauze | P |
+| Volledig scherm / venster | F11 of Alt+Enter |
+| Muziek aan/uit | N |
+| Schermafbeelding | F12 (slaat `shots/screenshot.png` op) |
+| Terug naar menu | Escape |
+| Spel afsluiten | EXIT GAME in het startmenu, dan Enter; Escape in het startmenu sluit ook af |
 
-Only the flippers on the screen the ball is on are live.
+Alleen de flippers op het scherm waar de bal zich bevindt, werken.
 
-## Sound
+## Geluid
 
-The game looks for `assets/audio/sounds.ron`, which maps each sound event to a
-`.wav` or `.ogg` file and a volume in dB. Drop your own files into
-`assets/audio/` and point the RON file at them; no recompile is needed. An event
-may list several files, and the game picks one at random per hit — the three
-bumper takes and two flipper takes keep repeated hits from sounding identical.
+Het spel zoekt `assets/audio/sounds.ron`, dat elk geluidsgebeurtenis koppelt aan
+een `.wav`- of `.ogg`-bestand en een volume in dB. Zet je eigen bestanden in
+`assets/audio/` en wijs het RON-bestand ernaar; opnieuw compileren is niet
+nodig. Een gebeurtenis mag meerdere bestanden noemen, en het spel kiest bij
+elke treffer willekeurig één ervan — de drie bumpers en twee flippervarianten
+zorgen dat herhaalde treffers niet identiek klinken.
 
-All fifteen events ship with a clip (eighteen WAV and `slot_win.ogg`). They are
-original recreations in the voice of the MSX AY-3-8910 PSG, not samples from the
-1984 game: three square-wave channels, noise, 16-step volume envelopes, pitch
-sweeps and short arpeggios. Files are decoded before playback; a missing, empty
-or corrupt file is replaced by a procedural PSG patch generated in code, so the
-game always has sound. Start-up logs how many files loaded and exactly which
-events used the fallback. If you own a recording of the original table, give the
-files these names (or edit `sounds.ron`) and the game will use them on the next
-start.
+Alle vijftien gebeurtenissen hebben een geluid (achttien WAV-bestanden en
+`slot_win.ogg`). Het zijn originele nabootsingen in de stem van de MSX
+AY-3-8910 PSG, geen samples uit het spel van 1984: drie blokgolfkanalen, ruis,
+volumenveloppen met 16 stappen, toonhoogteglijders en korte arpeggio's. De
+bestanden worden vóór het afspelen gedecodeerd; een ontbrekend, leeg of beschadigd
+bestand wordt vervangen door een procedurele PSG-klank die in de code wordt
+gemaakt, zodat het spel altijd geluid heeft. Bij het opstarten meldt het logboek
+hoeveel bestanden zijn geladen en precies welke gebeurtenissen de terugval gebruiken.
+Heb je een opname van de originele tafel, geef de bestanden dan deze namen (of
+pas `sounds.ron` aan); het spel gebruikt ze bij de volgende start.
 
-The background tune is `assets/audio/music_theme.wav`, mapped by the `music`
-entry in `sounds.ron`. It is an original 8-bar, 126 BPM A-minor chiptune
-(Am-F-C-G) with two square voices, a triangle bass and a noise drum kit, not a
-recording from 1984. It loops on a dedicated Kira channel at -16 dB and can be
-replaced with any 15-second-or-longer `.wav` or `.ogg` file. If the file is
-missing or unreadable, `synth_music()` generates a procedural 8-bit loop in
-code instead. N mutes the music without affecting the effects.
+De achtergrondmuziek is `assets/audio/music_theme.wav`, gekoppeld via de
+`music`-vermelding in `sounds.ron`. Het is een originele 8-matige chiptune in
+a-klein (Am-F-C-G) op 126 BPM met twee blokgolfstemmen, een driehoeksbas en een
+ruisdrumkit, geen opname uit 1984. De muziek loopt in een lus op een eigen
+Kira-kanaal op -16 dB en kan worden vervangen door elk `.wav`- of `.ogg`-bestand
+van 15 seconden of langer. Ontbreekt het bestand of is het onleesbaar, dan maakt
+`synth_music()` een procedurele 8-bit-lus in de code. Met N demp je de muziek
+zonder de effecten te raken.
 
-`tools/generate_audio.py` rebuilds the shipped effects bank, and
-`tools/generate_music.py` rebuilds the soundtrack.
+`tools/generate_audio.py` bouwt de meegeleverde effectenbank opnieuw op, en
+`tools/generate_music.py` doet hetzelfde voor de soundtrack.
 
-## 3D presentation notes
+## Opmerkingen bij de 3D-presentatie
 
-The playfield art is rendered into a 448 x 1920 nearest-neighbour texture and
-mapped onto the 3D slab, so every original lane label, lamp and score display
-remains readable while the perspective camera supplies depth. The hardware
-above it is built from real meshes: cylinders and torus crowns for the
-bumpers, capsules for the flippers, a three-reel cabinet frame, kickback rings
-that change from red to green when armed, a chrome plunger, drop-target bars,
-and a UV sphere with a metallic material for the ball. The supplied space
-artwork supplies the playfield backdrop, while a dim starfield and cyan/magenta
-point lights keep the cabinet from floating in a void. The art pass uses an
-extended far plane (2000 instead of 1000) so decals behind z=0 — background,
-screen seams and panels — are not clipped out of the printed texture.
-The cabinet is always composed inside a centred 4:3 area. In fullscreen a
-widescreen monitor gets dark side bars instead of a stretched table, and the
-sidebar keeps its exact 30% width. All the camera and presentation numbers are
-in `MECHANICS.md` and `mechanics.json`.
+De kunst van het speelveld wordt gerenderd naar een textuur van 448 x 1920 met
+nearest-neighbour-filtering en op de 3D-plaat gelegd, zodat elk origineel
+baanlabel, lampje en scorepaneel leesbaar blijft terwijl de perspectiefcamera
+diepte geeft. De hardware erboven bestaat uit echte meshes: cilinders en
+toruskronen voor de bumpers, capsules voor de flippers, een kastframe met drie
+rollen, kickback-ringen die van rood naar groen kleuren als ze scherp staan, een
+chromen plunger, drop-targetstaven en een UV-bol met een metaalmateriaal voor de
+bal. Het aangeleverde ruimtebeeld vult de achtergrond van het speelveld, terwijl
+een zwak sterrenveld en cyaan/magenta puntlichten voorkomen dat de kast in een
+leegte zweeft. De kunstlaag gebruikt een verlengd verre vlak (2000 in plaats van
+1000), zodat decals achter z=0 — achtergrond, schermnaden en panelen — niet uit
+de bedrukte textuur worden weggeknipt. De kast wordt altijd samengesteld binnen
+een gecentreerd 4:3-gebied. In volledig scherm krijgt een breedbeeldmonitor
+donkere zijbalken in plaats van een uitgerekte tafel, en de zijbalk houdt zijn
+exacte breedte van 30%. Alle camerawaarden en presentatiegetallen staan in
+`MECHANICS.md` en `mechanics.json`.
 
-## Physics notes
+## Opmerkingen bij de physics
 
-The simulation uses a fixed 120 Hz step. The ball has swept CCD against every
-body type plus speculative CCD, so a 2000+ px/s plunger shot cannot tunnel
-through a flipper. Flippers are kinematic capsules with a 48° limited sweep.
-Their stroke is driven by the fixed physics clock (so it does not change with
-the frame rate), they brake exactly at both end stops, and a hit is scaled by
-where the ball touches the rubber: weak near the hinge, strongest at the tip.
-A ball resting on a held-up flipper is not fired into the air. The ball now
-rolls freely instead of having its rotation locked, so it works its way down a
-passive rubber face instead of hanging on it; a slow ball still sitting on the
-rubber, the rounded tip or the hinge gets a gentle downhill shove after 0.75 s.
-The funnel walls stop short of the hinges to leave a real outlane instead of a
-pocket that traps the ball. The slot cabinet has a peaked cap instead of a
-flat shelf, so a landing ball rolls off; if one still hesitates there, a 1.1 s
-slot-area rescue gives it a sideways nudge. Bumpers and slingshots add
-restitution plus a scored impulse. All the tunable numbers are listed in
-`MECHANICS.md` and `mechanics.json`.
+De simulatie gebruikt een vaste stap van 120 Hz. De bal heeft swept CCD tegen
+elk lichaamstype plus speculative CCD, zodat een plungerschot van 2000+ px/s
+niet door een flipper kan schieten. Flippers zijn kinematische capsules met een
+beperkte zwaai van 48°. Hun beweging loopt op de vaste physicsklok (en is dus
+niet afhankelijk van de framerate), ze remmen exact op beide eindstanden, en een
+treffer wordt geschaald naar de plek waar de bal het rubber raakt: zwak bij het
+scharnier, het sterkst aan de punt. Een bal die op een opgehouden flipper rust,
+wordt niet de lucht in geschoten. De bal rolt nu vrij in plaats van met
+vastgezette rotatie, zodat hij van een passief rubbervlak afrolt in plaats van
+eraan te blijven hangen; een langzame bal die na 0,75 s nog steeds op het rubber,
+de afgeronde punt of het scharnier zit, krijgt een zachte duw bergafwaarts. De
+trechterwanden stoppen vóór de scharnieren, zodat er een echte uitloop ontstaat
+in plaats van een zak die de bal vasthoudt. De gokkast heeft een puntdak in
+plaats van een vlakke plank, zodat een landende bal eraf rolt; blijft er toch een
+bal aarzelen, dan geeft een reddingsduwtje na 1,1 s hem een zetje opzij. Alle
+afstelbare getallen staan in `MECHANICS.md` en `mechanics.json`.

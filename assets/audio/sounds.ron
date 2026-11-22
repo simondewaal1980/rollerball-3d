@@ -1,20 +1,21 @@
-// ROLLERBALL sound map.
+// Geluidskaart van ROLLERBALL.
 //
-// Drop your own .wav or .ogg files into this folder and point at them here.
-// Missing files are replaced automatically by the built-in PSG-style synth.
-// volume_db is in decibels; -12 is quiet, -6 is loud.
+// Zet je eigen .wav- of .ogg-bestanden in deze map en wijs ze hier aan.
+// Ontbrekende bestanden worden automatisch vervangen door de ingebouwde
+// PSG-synth. volume_db is in decibel; -12 is zacht, -6 is hard.
 //
-// The shipped clips are original MSX-PSG-style recreations, not samples from
-// the 1984 game. If you own an original recording, drop the files in this
-// folder under these names (or edit the file names below) and the game uses
-// them on the next start, without a rebuild.
+// De meegeleverde clips zijn originele nabootsingen in MSX-PSG-stijl, geen
+// samples uit het spel van 1984. Heb je een originele opname, zet de bestanden
+// dan onder deze namen in deze map (of pas de bestandsnamen hieronder aan); het
+// spel gebruikt ze bij de volgende start, zonder opnieuw te compileren.
 //
-// An event may appear more than once. The game then picks one of its files at
-// random for every hit, so repeated bumpers do not sound mechanically alike.
+// Een gebeurtenis mag vaker voorkomen. Het spel kiest dan bij elke treffer
+// willekeurig één van die bestanden, zodat herhaalde bumpers niet mechanisch
+// hetzelfde klinken.
 //
-// The looping background tune lives on its own channel (N mutes it). Replace
-// music_theme.wav with an .ogg or .wav of your own; missing files fall back to
-// the procedural 8-bit loop in code.
+// De continu lopende achtergrondmuziek heeft een eigen kanaal (N dempt hem).
+// Vervang music_theme.wav door een eigen .ogg of .wav; ontbrekende bestanden
+// vallen terug op de procedurele 8-bit-lus in de code.
 (
     music: (file: "music_theme.wav", volume_db: -16.0),
     sounds: [
